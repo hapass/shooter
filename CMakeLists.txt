@@ -4,17 +4,24 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(shooter VERSION 0.1.0)
 
-set(murl_PATH "/Users/hapass/Downloads/murl_2018.2.7478/murl")
+set(MACOSX_BUNDLE_LONG_VERSION_STRING ${PROJECT_VERSION})
+set(MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION})
+set(MACOSX_BUNDLE_INFO_STRING "Shooter game")
+set(MACOSX_BUNDLE_BUNDLE_NAME "com.watercolorgames.shooter")
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+
+#shooter executable
+message("Murl path: '${murl_PATH}'")
+
 set(murl_BINARIES "${murl_PATH}/base/binaries/osx/Release")
 set(murl_THIRDPARTY_BINARIES "${murl_PATH}/3rd_party/binaries/osx/Release")
 set(murl_INCLUDES "${murl_PATH}/base/include")
 set(murl_THIRDPARTY_INCLUDES "${murl_PATH}/3rd_party/include")
 
-#executable
 file(GLOB shooter_SRC
     "src/main/cpp/*.cpp"
     "src/main/cpp/*.h"
-    
 )
 
 file(GLOB shooter_RESOURCES
@@ -57,10 +64,3 @@ target_include_directories(shooter PUBLIC
     ${murl_INCLUDES}/engine/**
     ${murl_INCLUDES}/platform/**
 )
-
-set(MACOSX_BUNDLE_INFO_STRING "Shooter")
-set(MACOSX_BUNDLE_LONG_VERSION_STRING "1")
-set(MACOSX_BUNDLE_BUNDLE_NAME "com.watercolorgames.shooter")
-set(MACOSX_BUNDLE_BUNDLE_VERSION "1")
-
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")

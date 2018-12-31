@@ -1,4 +1,4 @@
 mkdir -p build
 cd build
 
-cmake -GXcode ..
+cmake -C ../CMakeProperties.txt -GXcode ..
