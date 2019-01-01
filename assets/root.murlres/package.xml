@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Package xmlns="http://murlengine.com" id="package_main">
+  <Resource id="graph" fileName="graph.xml"/>
+  <Instance graphResourceId="graph"/>
+</Package>

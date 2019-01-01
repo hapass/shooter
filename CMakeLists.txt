@@ -28,6 +28,7 @@ file(GLOB shooter_SRC
 
 file(GLOB shooter_RESOURCES
     "${murl_PATH}/base/source/platform/osx/cocoa/murl_platform_osx_cocoa_main_window.xib"
+    "assets/root.murlres"
 )
 set_source_files_properties(${shooter_RESOURCES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 

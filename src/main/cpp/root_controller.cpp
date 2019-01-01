@@ -11,9 +11,5 @@ Bool App::RootController::OnInit(const Logic::IState *state) {
   if (!AreGraphNodesValid()) {
     return false;
   }
-
-  Math::Clamp(10, 11, 12);
-
-  state->SetUserDebugMessage("Hello World");
   return true;
 }

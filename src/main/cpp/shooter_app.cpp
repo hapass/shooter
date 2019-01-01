@@ -18,9 +18,17 @@ Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
 }
 
 Bool App::ShooterApp::Init(const IAppState *appState) {
-  controller = new RootController(appState->GetLogicFactory());
-  appState->GetLoader()->AddPackage("debug", ILoader::LOAD_MODE_STARTUP,
-                                    controller->GetProcessor());
+  auto loader = appState->GetLoader();
+
+  if (Util::IsDebugBuild()) {
+    loader->AddPackage("debug", ILoader::LOAD_MODE_STARTUP);
+  }
+
+  this->controller = new RootController(appState->GetLogicFactory());
+
+  auto processor = controller->GetProcessor();
+  loader->AddPackage("root.murlres", ILoader::LOAD_MODE_BACKGROUND, processor);
+
   return true;
 }
 
