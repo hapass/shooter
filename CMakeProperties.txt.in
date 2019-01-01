@@ -1,1 +1,1 @@
-set(murl_PATH "lib/murl" CACHE STRING "path to murl engine")
+set(murl_PATH "/murl_2018.2.7478/murl" CACHE STRING "path to murl engine")
