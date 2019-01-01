@@ -8,4 +8,4 @@
 1. Install cmake. Terminal: *brew install cmake*
 1. Copy and rename template CMakeProperties.txt.in to CMakeProperties.txt
 1. Configure your path to murl folder of the murl engine in CMakeProperties.txt
-1. Run. Terminal: *./build.sh*
+1. Run. Terminal: *./run.sh*

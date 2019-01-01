@@ -12,12 +12,14 @@ set(MACOSX_BUNDLE_BUNDLE_NAME "com.watercolorgames.shooter")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 #shooter executable
-message("Murl path: '${murl_PATH}'")
-
-set(murl_BINARIES "${murl_PATH}/base/binaries/osx/Release")
-set(murl_THIRDPARTY_BINARIES "${murl_PATH}/3rd_party/binaries/osx/Release")
+set(murl_BINARIES_OSX "${murl_PATH}/base/binaries/osx")
+set(murl_THIRDPARTY_BINARIES_OSX "${murl_PATH}/3rd_party/binaries/osx")
 set(murl_INCLUDES "${murl_PATH}/base/include")
 set(murl_THIRDPARTY_INCLUDES "${murl_PATH}/3rd_party/include")
+
+set(murl_ENGINE_LIB optimized ${murl_BINARIES_OSX}/Release/libmurl_engine.a debug ${murl_BINARIES_OSX}/Debug/libmurl_engine.a)
+set(murl_PLATFORM_LIB optimized optimized ${murl_BINARIES_OSX}/Release/libmurl_platform.a debug ${murl_BINARIES_OSX}/Debug/libmurl_platform.a)
+set(murl_THIRDPARTY_LIB optimized ${murl_THIRDPARTY_BINARIES_OSX}/Release/libmurl_3rd_party.a debug ${murl_THIRDPARTY_BINARIES_OSX}/Debug/libmurl_3rd_party.a)
 
 file(GLOB shooter_SRC
     "src/main/cpp/*.cpp"
@@ -35,9 +37,9 @@ add_executable(shooter MACOSX_BUNDLE
 )
 
 target_link_libraries(shooter 
-    ${murl_BINARIES}/libmurl_engine.a
-    ${murl_BINARIES}/libmurl_platform.a
-    ${murl_THIRDPARTY_BINARIES}/libmurl_3rd_party.a
+    ${murl_ENGINE_LIB}
+    ${murl_PLATFORM_LIB}
+    ${murl_THIRDPARTY_LIB}
     "-framework OpenGL"
     "-framework OpenAL"
     "-framework CoreLocation"
@@ -59,8 +61,23 @@ target_link_libraries(shooter
 )
 
 target_include_directories(shooter PUBLIC
-    ${murl_INCLUDES}/addons/**
-    ${murl_INCLUDES}/app/**
-    ${murl_INCLUDES}/engine/**
-    ${murl_INCLUDES}/platform/**
+    "${murl_INCLUDES}/addons/filepanel"
+    "${murl_INCLUDES}/addons/lua"
+    "${murl_INCLUDES}/app"
+    "${murl_INCLUDES}/engine"
+    "${murl_INCLUDES}/engine/audio"
+    "${murl_INCLUDES}/engine/core"
+    "${murl_INCLUDES}/engine/debug"
+    "${murl_INCLUDES}/engine/graph"
+    "${murl_INCLUDES}/engine/input"
+    "${murl_INCLUDES}/engine/logic"
+    "${murl_INCLUDES}/engine/math"
+    "${murl_INCLUDES}/engine/net"
+    "${murl_INCLUDES}/engine/output"
+    "${murl_INCLUDES}/engine/physics"
+    "${murl_INCLUDES}/engine/resource"
+    "${murl_INCLUDES}/engine/system"
+    "${murl_INCLUDES}/engine/util"
+    "${murl_INCLUDES}/engine/video"
+    "${murl_INCLUDES}/platform"
 )
