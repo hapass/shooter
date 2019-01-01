@@ -1,3 +1,4 @@
 build
 CMakeProperties.txt
 .DS_Store
+.vscode
