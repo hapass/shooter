@@ -3,7 +3,12 @@
 using namespace Murl;
 
 App::RootController::RootController(Logic::IFactory *factory)
-    : BaseProcessor(factory) {}
+    : BaseProcessor(factory) {
+      this->cameraXAxis = Vector(1, 0, 0, 0);
+      this->cameraYAxis = Vector(0, 1, 0, 0);
+      this->cameraZAxis = Vector(0, 0, 1, 0);
+      this->cameraPosition = Vector(0, 0, 800, 1);
+    }
 
 App::RootController::~RootController() {}
 
@@ -20,23 +25,23 @@ Bool App::RootController::OnInit(const Logic::IState *state) {
 void App::RootController::OnProcessTick(const Logic::IState *state) {
   auto deviceHandler = state->GetDeviceHandler();
 
-  auto position = cameraTransform->GetPosition();
-
   if (deviceHandler->IsRawKeyPressed(RawKeyCode::RAWKEY_D)) {
-    cameraTransform->SetPosition(position.Add(Vector(10, 0, 0, 0)));
+    cameraPosition = cameraPosition.Add(cameraXAxis * 10);
   }
 
   if (deviceHandler->IsRawKeyPressed(RawKeyCode::RAWKEY_A)) {
-    cameraTransform->SetPosition(position.Add(Vector(-10, 0, 0, 0)));
+    cameraPosition = cameraPosition.Subtract(cameraXAxis * 10);
   }
 
   if (deviceHandler->IsRawKeyPressed(RawKeyCode::RAWKEY_W)) {
-    cameraTransform->SetPosition(position.Add(Vector(0, 0, -10, 0)));
+    cameraPosition = cameraPosition.Subtract(cameraZAxis * 10);
   }
 
   if (deviceHandler->IsRawKeyPressed(RawKeyCode::RAWKEY_S)) {
-    cameraTransform->SetPosition(position.Add(Vector(0, 0, 10, 0)));
+    cameraPosition = cameraPosition.Add(cameraZAxis * 10);
   }
+
+  cameraTransform->SetPosition(cameraPosition);
 
   if (deviceHandler->WasMouseMoved()) {
     Logic::Real x = 0;
@@ -55,6 +60,11 @@ void App::RootController::OnProcessTick(const Logic::IState *state) {
       totalRotationAroundX = yRadians + currentRotationAroundX;
     }
 
-    cameraTransform->SetRotation(totalRotationAroundX, -xRadians + currentRotationAroundY, 0);
+    Matrix matrix;
+    matrix.SetRotationComponent(-xRadians, cameraYAxis);
+    cameraXAxis = matrix.Rotate(cameraXAxis);
+    cameraZAxis = matrix.Rotate(cameraZAxis);
+
+    cameraTransform->SetRotation(totalRotationAroundX, currentRotationAroundY - xRadians, 0);
   }
 }

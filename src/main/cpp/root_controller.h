@@ -16,6 +16,10 @@ protected:
 
 private:
   Logic::TransformNode cameraTransform;
+  Logic::Vector cameraXAxis;
+  Logic::Vector cameraYAxis;
+  Logic::Vector cameraZAxis;
+  Logic::Vector cameraPosition;
 };
 } // namespace App
 } // namespace Murl
