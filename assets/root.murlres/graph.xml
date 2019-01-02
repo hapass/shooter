@@ -3,7 +3,7 @@
 <Graph xmlns="http://murlengine.com">
   <View id="view"/>
   <Camera id="camera" viewId="view" fieldOfViewX="400" nearPlane="400" farPlane="2500" clearColorBuffer="1">
-    <CameraTransform cameraId="camera" posX="0" posY="0" posZ="800" />
+    <CameraTransform id="camera_transform" cameraId="camera" posX="0" posY="0" posZ="800" />
 
     <FixedProgram id="program_white" />
     <Material id="material_white" programId="program_white" />

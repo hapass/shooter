@@ -12,6 +12,10 @@ public:
 
 protected:
   virtual Bool OnInit(const Logic::IState *state);
+  virtual void OnProcessTick(const Logic::IState *state);
+
+private:
+  Logic::TransformNode cameraTransform;
 };
 } // namespace App
 } // namespace Murl
