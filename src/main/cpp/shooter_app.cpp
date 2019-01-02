@@ -12,19 +12,18 @@ Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
   IAppConfiguration *appConfig = engineConfig->GetAppConfiguration();
 
   appConfig->SetWindowTitle("Shooter");
-  appConfig->SetFullScreenEnabled(false);
+  appConfig->SetFullScreenEnabled(true);
+  appConfig->SetMouseCursorHidden(true);
+  appConfig->SetSystemDebugInfoItems(IEnums::STATISTIC_ITEM_FRAMES_PER_SECOND);
 
   return true;
 }
 
 Bool App::ShooterApp::Init(const IAppState *appState) {
   auto loader = appState->GetLoader();
+  loader->AddPackage("debug", ILoader::LOAD_MODE_STARTUP);
 
-  if (Util::IsDebugBuild()) {
-    loader->AddPackage("debug", ILoader::LOAD_MODE_STARTUP);
-  }
-
-  this->controller = new RootController(appState->GetLogicFactory());
+  controller = new RootController(appState->GetLogicFactory());
 
   auto processor = controller->GetProcessor();
   loader->AddPackage("root.murlres", ILoader::LOAD_MODE_BACKGROUND, processor);

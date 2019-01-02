@@ -5,9 +5,13 @@
   <Camera id="camera" viewId="view" fieldOfViewX="400" nearPlane="400" farPlane="2500" clearColorBuffer="1">
     <CameraTransform id="camera_transform" cameraId="camera" posX="0" posY="0" posZ="800" />
 
-    <FixedProgram id="program_white" />
-    <Material id="material_white" programId="program_white" />
-    <MaterialState materialId="material_white" slot="0" />
+    <FlatTexture id="wood_texture" imageResourceId="wood"/>
+
+    <FixedProgram id="program_texture" textureUnit0Enabled="yes" />
+    <Material id="material_wood" programId="program_texture" visibleFaces="FRONT_AND_BACK" />
+
+    <TextureState slot="0" textureId="wood_texture"/>
+    <MaterialState materialId="material_wood" slot="0" />
 
     <CubeGeometry id="cube" scaleFactor="200" posX="0" posY="0" posZ="0" />
   </Camera>

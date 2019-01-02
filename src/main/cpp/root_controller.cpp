@@ -4,11 +4,11 @@ using namespace Murl;
 
 App::RootController::RootController(Logic::IFactory *factory)
     : BaseProcessor(factory) {
-      this->cameraXAxis = Vector(1, 0, 0, 0);
-      this->cameraYAxis = Vector(0, 1, 0, 0);
-      this->cameraZAxis = Vector(0, 0, 1, 0);
-      this->cameraPosition = Vector(0, 0, 800, 1);
-    }
+  this->cameraXAxis = Vector(1, 0, 0, 0);
+  this->cameraYAxis = Vector(0, 1, 0, 0);
+  this->cameraZAxis = Vector(0, 0, 1, 0);
+  this->cameraPosition = Vector(0, 0, 800, 1);
+}
 
 App::RootController::~RootController() {}
 
@@ -55,8 +55,8 @@ void App::RootController::OnProcessTick(const Logic::IState *state) {
     Logic::Real currentRotationAroundY = cameraTransform->GetRotationY();
 
     Logic::Real totalRotationAroundX = 0;
-    if(currentRotationAroundX + yRadians < Math::PI * 2 && 
-       currentRotationAroundX + yRadians > -Math::PI * 2) {
+    if (currentRotationAroundX + yRadians < Math::PI * 2 &&
+        currentRotationAroundX + yRadians > -Math::PI * 2) {
       totalRotationAroundX = yRadians + currentRotationAroundX;
     }
 
@@ -65,6 +65,11 @@ void App::RootController::OnProcessTick(const Logic::IState *state) {
     cameraXAxis = matrix.Rotate(cameraXAxis);
     cameraZAxis = matrix.Rotate(cameraZAxis);
 
-    cameraTransform->SetRotation(totalRotationAroundX, currentRotationAroundY - xRadians, 0);
+    cameraTransform->SetRotation(totalRotationAroundX,
+                                 currentRotationAroundY - xRadians, 0);
+  }
+
+  if (deviceHandler->IsRawKeyPressed(RawKeyCode::RAWKEY_ESCAPE)) {
+    deviceHandler->TerminateApp();
   }
 }

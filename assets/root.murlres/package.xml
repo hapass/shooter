@@ -2,5 +2,6 @@
 
 <Package xmlns="http://murlengine.com" id="package_main">
   <Resource id="graph" fileName="graph.xml"/>
+  <Resource id="wood" fileName="wood.jpg"/>
   <Instance graphResourceId="graph"/>
 </Package>
