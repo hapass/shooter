@@ -5,14 +5,30 @@
   <Camera id="camera" viewId="view" fieldOfViewX="400" nearPlane="400" farPlane="2500" clearColorBuffer="1">
     <CameraTransform id="camera_transform" cameraId="camera" posX="0" posY="0" posZ="800" />
 
+    <Light type="POINT" id="light"
+      diffuseColor="1f,1f,1f,1f"
+      ambientColor="0.1f, 0.1f, 0.1f, 1f"
+      specularColor="0.1f, 0.1f, 0.1f, 1f"
+    />
+    <LightTransform id="light_transform" lightId="light" posX="0" posY="0" posZ="800" />
+    <LightState lightId="light" unit="0" />
+
     <FlatTexture id="wood_texture" imageResourceId="wood"/>
 
-    <FixedProgram id="program_texture" textureUnit0Enabled="yes" />
+    <FixedProgram id="program_texture" textureUnit0Enabled="yes" lightingEnabled="yes" />
     <Material id="material_wood" programId="program_texture" visibleFaces="FRONT_AND_BACK" />
 
     <TextureState slot="0" textureId="wood_texture"/>
     <MaterialState materialId="material_wood" slot="0" />
 
     <CubeGeometry id="cube" scaleFactor="200" posX="0" posY="0" posZ="0" />
+
+    <FixedProgram id="program_floor" textureUnit0Enabled="yes" lightingEnabled="no" />
+    <Material id="material_floor" programId="program_floor" visibleFaces="FRONT_AND_BACK" />
+
+    <TextureState slot="0" textureId="wood_texture"/>
+    <MaterialState materialId="material_floor" slot="0" />
+
+    <PlaneGeometry id="plane" scaleFactor="2000" posX="0" posY="-500" posZ="0" angleX="-30deg" />
   </Camera>
 </Graph>

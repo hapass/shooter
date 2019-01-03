@@ -18,7 +18,7 @@ set(murl_INCLUDES "${murl_PATH}/base/include")
 set(murl_THIRDPARTY_INCLUDES "${murl_PATH}/3rd_party/include")
 
 set(murl_ENGINE_LIB optimized ${murl_BINARIES_OSX}/Release/libmurl_engine.a debug ${murl_BINARIES_OSX}/Debug/libmurl_engine.a)
-set(murl_PLATFORM_LIB optimized optimized ${murl_BINARIES_OSX}/Release/libmurl_platform.a debug ${murl_BINARIES_OSX}/Debug/libmurl_platform.a)
+set(murl_PLATFORM_LIB optimized ${murl_BINARIES_OSX}/Release/libmurl_platform.a debug ${murl_BINARIES_OSX}/Debug/libmurl_platform.a)
 set(murl_THIRDPARTY_LIB optimized ${murl_THIRDPARTY_BINARIES_OSX}/Release/libmurl_3rd_party.a debug ${murl_THIRDPARTY_BINARIES_OSX}/Debug/libmurl_3rd_party.a)
 
 file(GLOB shooter_SRC

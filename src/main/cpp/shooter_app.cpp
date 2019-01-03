@@ -12,8 +12,8 @@ Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
   IAppConfiguration *appConfig = engineConfig->GetAppConfiguration();
 
   appConfig->SetWindowTitle("Shooter");
-  appConfig->SetFullScreenEnabled(true);
-  appConfig->SetMouseCursorHidden(true);
+  appConfig->SetFullScreenEnabled(false);
+  appConfig->SetMouseCursorHidden(false);
   appConfig->SetSystemDebugInfoItems(IEnums::STATISTIC_ITEM_FRAMES_PER_SECOND);
 
   return true;
