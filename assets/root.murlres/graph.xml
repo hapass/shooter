@@ -22,13 +22,6 @@
     <MaterialState materialId="material_wood" slot="0" />
 
     <CubeGeometry id="cube" scaleFactor="200" posX="0" posY="0" posZ="0" />
-
-    <FixedProgram id="program_floor" textureUnit0Enabled="yes" lightingEnabled="no" />
-    <Material id="material_floor" programId="program_floor" visibleFaces="FRONT_AND_BACK" />
-
-    <TextureState slot="0" textureId="wood_texture"/>
-    <MaterialState materialId="material_floor" slot="0" />
-
-    <PlaneGeometry id="plane" scaleFactor="2000" posX="0" posY="-500" posZ="0" angleX="-30deg" />
+    <PlaneGeometry id="plane" scaleFactor="2000" posX="0" posY="-500" posZ="0" angleX="90deg" hasNormal="yes" />
   </Camera>
 </Graph>
