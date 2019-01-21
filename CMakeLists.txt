@@ -21,6 +21,8 @@ set(murl_ENGINE_LIB optimized ${murl_BINARIES_OSX}/Release/libmurl_engine.a debu
 set(murl_PLATFORM_LIB optimized ${murl_BINARIES_OSX}/Release/libmurl_platform.a debug ${murl_BINARIES_OSX}/Debug/libmurl_platform.a)
 set(murl_THIRDPARTY_LIB optimized ${murl_THIRDPARTY_BINARIES_OSX}/Release/libmurl_3rd_party.a debug ${murl_THIRDPARTY_BINARIES_OSX}/Debug/libmurl_3rd_party.a)
 
+set(CMAKE_XCODE_ATTRIBUTE_DEBUG_INFORMATION_FORMAT "dwarf-with-dsym")
+
 file(GLOB shooter_SRC
     "src/main/cpp/*.cpp"
     "src/main/cpp/*.h"
