@@ -8,6 +8,7 @@ App::RootController::RootController(Logic::IFactory *factory)
   this->cameraYAxis = Vector(0, 1, 0, 0);
   this->cameraZAxis = Vector(0, 0, 1, 0);
   this->cameraPosition = Vector(0, 0, 800, 1);
+  this->otherFieldOfView = 20;
 }
 
 App::RootController::~RootController() {}
@@ -15,11 +16,9 @@ App::RootController::~RootController() {}
 Bool App::RootController::OnInit(const Logic::IState *state) {
   auto root = state->GetGraphRoot();
   AddGraphNode(cameraTransform.GetReference(root, "camera_transform"));
+  AddGraphNode(camera.GetReference(root, "camera"));
 
-  if (!AreGraphNodesValid()) {
-    return false;
-  }
-  return true;
+  return AreGraphNodesValid();
 }
 
 void App::RootController::OnProcessTick(const Logic::IState *state) {
@@ -67,9 +66,18 @@ void App::RootController::OnProcessTick(const Logic::IState *state) {
 
     cameraTransform->SetRotation(totalRotationAroundX,
                                  currentRotationAroundY - xRadians, 0);
+
   }
 
-  if (deviceHandler->IsRawKeyPressed(RawKeyCode::RAWKEY_ESCAPE)) {
+  if(deviceHandler->WasRawKeyPressed(RawKeyCode::RAWKEY_F)) {
+    camera->SetFieldOfViewX(camera->GetFieldOfViewX() - this->otherFieldOfView);
+  }
+
+  if(deviceHandler->WasRawKeyPressed(RawKeyCode::RAWKEY_G)) {
+    camera->SetFieldOfViewX(camera->GetFieldOfViewX() + this->otherFieldOfView);
+  }
+
+  if (deviceHandler->WasRawKeyPressed(RawKeyCode::RAWKEY_ESCAPE)) {
     deviceHandler->TerminateApp();
   }
 }

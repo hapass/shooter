@@ -14,6 +14,7 @@ Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
   appConfig->SetWindowTitle("Shooter");
   appConfig->SetFullScreenEnabled(false);
   appConfig->SetMouseCursorHidden(false);
+  appConfig->SetDisplaySurfaceSize(1280, 960);
   appConfig->SetSystemDebugInfoItems(IEnums::STATISTIC_ITEM_FRAMES_PER_SECOND);
 
   return true;

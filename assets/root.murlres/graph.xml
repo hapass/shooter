@@ -2,7 +2,7 @@
 
 <Graph xmlns="http://murlengine.com">
   <View id="view"/>
-  <Camera id="camera" viewId="view" fieldOfViewX="400" nearPlane="400" farPlane="2500" clearColorBuffer="1">
+  <Camera id="camera" viewId="view" fieldOfViewX="400" nearPlane="128" farPlane="40000" clearColorBuffer="1">
     <CameraTransform id="camera_transform" cameraId="camera" posX="0" posY="0" posZ="800" />
 
     <Light type="POINT" id="light"
