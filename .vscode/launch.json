@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "preLaunchTask": "build_debug",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Debug/shooter.app/Contents/MacOS/shooter",
+            "args": [],
+            "cwd": "${workspaceFolder}/build/Debug/shooter.app/Contents/Resources",
+            "initCommands": [
+                "settings set target.source-map /Users/Andy/Source/murl ${workspaceFolder}/lib/murl/murl"
+            ]
+        }
+    ]
+}

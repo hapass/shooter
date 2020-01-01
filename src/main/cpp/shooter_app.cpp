@@ -1,15 +1,26 @@
+#include "murl_app.h"
 #include "shooter_app.h"
 #include "root_controller.h"
 
 using namespace Murl;
 
-App::ShooterApp::ShooterApp() : controller(0) {}
+IApp *App::CreateApp() 
+{ 
+  return new ShooterApp();
+}
+
+void App::DestroyApp(IApp *app) 
+{
+  Util::Release(app);
+}
+
+App::ShooterApp::ShooterApp() : controller(nullptr) {} //main thread
 
 App::ShooterApp::~ShooterApp() {}
 
 Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
                                 IFileInterface *fileInterface) {
-  IAppConfiguration *appConfig = engineConfig->GetAppConfiguration();
+  IAppConfiguration *appConfig = engineConfig->GetAppConfiguration(); //main thread
 
   appConfig->SetWindowTitle("Shooter");
   appConfig->SetFullScreenEnabled(false);
@@ -21,7 +32,7 @@ Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
 }
 
 Bool App::ShooterApp::Init(const IAppState *appState) {
-  auto loader = appState->GetLoader();
+  auto loader = appState->GetLoader(); //main thread
   loader->AddPackage("debug", ILoader::LOAD_MODE_STARTUP);
 
   controller = new RootController(appState->GetLogicFactory());

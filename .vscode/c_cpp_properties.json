@@ -1,0 +1,38 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/src/main/cpp/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/addons/filepanel/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/addons/lua/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/app/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/audio/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/core/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/debug/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/graph/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/input/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/logic/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/math/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/net/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/output/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/physics/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/resource/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/system/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/util/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/engine/video/**",
+                "${workspaceFolder}/lib/murl/murl/base/include/platform/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}

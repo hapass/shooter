@@ -15,6 +15,7 @@ protected:
   virtual void OnProcessTick(const Logic::IState *state);
 
 private:
+  
   Real otherFieldOfView;
   Logic::TransformNode cameraTransform;
   Logic::CameraNode camera;
