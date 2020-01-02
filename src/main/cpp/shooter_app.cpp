@@ -1,6 +1,6 @@
 #include "murl_app.h"
 #include "shooter_app.h"
-#include "root_controller.h"
+#include "scene_manager.h"
 
 using namespace Murl;
 
@@ -14,13 +14,13 @@ void App::DestroyApp(IApp *app)
   Util::Release(app);
 }
 
-App::ShooterApp::ShooterApp() : controller(nullptr) {} //main thread
+App::ShooterApp::ShooterApp() : controller(nullptr) {}
 
 App::ShooterApp::~ShooterApp() {}
 
 Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
                                 IFileInterface *fileInterface) {
-  IAppConfiguration *appConfig = engineConfig->GetAppConfiguration(); //main thread
+  IAppConfiguration *appConfig = engineConfig->GetAppConfiguration();
 
   appConfig->SetWindowTitle("Shooter");
   appConfig->SetFullScreenEnabled(false);
@@ -32,18 +32,15 @@ Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
 }
 
 Bool App::ShooterApp::Init(const IAppState *appState) {
-  auto loader = appState->GetLoader(); //main thread
-  loader->AddPackage("debug", ILoader::LOAD_MODE_STARTUP);
-
-  controller = new RootController(appState->GetLogicFactory());
-
-  auto processor = controller->GetProcessor();
-  loader->AddPackage("root.murlres", ILoader::LOAD_MODE_BACKGROUND, processor);
-
+  appState->GetLoader()->AddPackage("debug", ILoader::LOAD_MODE_STARTUP);
+  
+  controller = new SceneManager(appState->GetLogicFactory());
+  appState->GetLoader()->AddProcessor(controller->GetProcessor());
   return true;
 }
 
 Bool App::ShooterApp::DeInit(const IAppState *appState) {
+  appState->GetLoader()->RemoveProcessor(controller->GetProcessor());
   Util::Release(controller);
   return true;
 }

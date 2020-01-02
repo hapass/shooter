@@ -1,27 +1,21 @@
-#include "root_controller.h"
+#include "scene_manager.h"
 
 using namespace Murl;
 
-App::RootController::RootController(Logic::IFactory *factory)
-    : BaseProcessor(factory) {
-  this->cameraXAxis = Vector(1, 0, 0, 0); //main thread
-  this->cameraYAxis = Vector(0, 1, 0, 0);
-  this->cameraZAxis = Vector(0, 0, 1, 0);
-  this->cameraPosition = Vector(0, 0, 800, 1);
-  this->otherFieldOfView = 20;
-}
+// Bool App::SceneManager::OnInit(const Logic::IState *state) {
+//   auto root = state->GetGraphRoot(); //loader thread
+//   AddGraphNode(cameraTransform.GetReference(root, "camera_transform"));
+//   AddGraphNode(camera.GetReference(root, "camera"));
+//   loader->AddPackage("root.murlres", ILoader::LOAD_MODE_BACKGROUND);
+//   this->cameraXAxis = Vector(1, 0, 0, 0); //main thread
+//   this->cameraYAxis = Vector(0, 1, 0, 0);
+//   this->cameraZAxis = Vector(0, 0, 1, 0);
+//   this->cameraPosition = Vector(0, 0, 800, 1);
+//   this->otherFieldOfView = 20;
+//   return AreGraphNodesValid();
+// }
 
-App::RootController::~RootController() {}
-
-Bool App::RootController::OnInit(const Logic::IState *state) {
-  auto root = state->GetGraphRoot(); //loader thread
-  AddGraphNode(cameraTransform.GetReference(root, "camera_transform"));
-  AddGraphNode(camera.GetReference(root, "camera"));
-
-  return AreGraphNodesValid();
-}
-
-void App::RootController::OnProcessTick(const Logic::IState *state) {
+void App::SceneManager::OnProcessTick(const Logic::IState *state) {
   auto deviceHandler = state->GetDeviceHandler(); //logic thread
 
   if (deviceHandler->IsRawKeyPressed(RawKeyCode::RAWKEY_D)) {

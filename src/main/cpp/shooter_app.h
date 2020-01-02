@@ -1,10 +1,15 @@
 #pragma once
 
 #include "murl_app_base.h"
-#include "root_controller.h"
 
 namespace Murl {
 namespace App {
+
+class SceneManager;
+
+/**
+ * Bootstrapper for the game. Operations in this class happen on main thread.
+ **/
 class ShooterApp : public AppBase {
 public:
   ShooterApp();
@@ -15,8 +20,9 @@ public:
   virtual Bool Init(const IAppState *appState);
   virtual Bool DeInit(const IAppState *appState);
 
-protected:
-  RootController *controller;
+private:
+  SceneManager *controller;
 };
-} // namespace App
-} // namespace Murl
+
+}
+}

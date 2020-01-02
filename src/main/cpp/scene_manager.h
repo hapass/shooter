@@ -5,17 +5,19 @@
 
 namespace Murl {
 namespace App {
-class RootController : public Logic::BaseProcessor {
+
+/**
+ * This class manages scenes and packages in the game. OnInit and ctor are executed on wrong thread, so 
+ **/
+class SceneManager : public Logic::BaseProcessor {
 public:
-  RootController(Logic::IFactory *factory);
-  virtual ~RootController();
+  using Logic::BaseProcessor::BaseProcessor;
 
 protected:
-  virtual Bool OnInit(const Logic::IState *state);
   virtual void OnProcessTick(const Logic::IState *state);
 
 private:
-  
+
   Real otherFieldOfView;
   Logic::TransformNode cameraTransform;
   Logic::CameraNode camera;
@@ -24,5 +26,6 @@ private:
   Logic::Vector cameraZAxis;
   Logic::Vector cameraPosition;
 };
-} // namespace App
-} // namespace Murl
+
+}
+}
