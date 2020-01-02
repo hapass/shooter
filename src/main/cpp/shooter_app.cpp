@@ -20,7 +20,7 @@ App::ShooterApp::~ShooterApp() {}
 
 Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
                                 IFileInterface *fileInterface) {
-  IAppConfiguration *appConfig = engineConfig->GetAppConfiguration();
+  auto appConfig = engineConfig->GetAppConfiguration();
 
   appConfig->SetWindowTitle("Shooter");
   appConfig->SetFullScreenEnabled(false);
@@ -40,7 +40,6 @@ Bool App::ShooterApp::Init(const IAppState *appState) {
 }
 
 Bool App::ShooterApp::DeInit(const IAppState *appState) {
-  appState->GetLoader()->RemoveProcessor(controller->GetProcessor());
   Util::Release(controller);
   return true;
 }
