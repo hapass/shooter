@@ -2,15 +2,15 @@
 
 using namespace Murl;
 
-Bool App::GameScene::OnInit(const Logic::IState* state)
-{
+Bool App::GameScene::OnInit(const Logic::IState *state) {
   this->cameraXAxis = Vector(1, 0, 0, 0);
   this->cameraYAxis = Vector(0, 1, 0, 0);
   this->cameraZAxis = Vector(0, 0, 1, 0);
   this->cameraPosition = Vector(0, 0, 800, 1);
   this->otherFieldOfView = 20;
 
-  AddGraphNode(cameraTransform.GetReference(state->GetGraphRoot(), "camera_transform"));
+  AddGraphNode(
+      cameraTransform.GetReference(state->GetGraphRoot(), "camera_transform"));
   AddGraphNode(camera.GetReference(state->GetGraphRoot(), "camera"));
 
   return AreGraphNodesValid();
@@ -61,7 +61,6 @@ void App::GameScene::OnProcessTick(const Logic::IState *state) {
 
     cameraTransform->SetRotation(totalRotationAroundX,
                                  currentRotationAroundY - xRadians, 0);
-
   }
 
   if (deviceHandler->WasRawKeyPressed(RawKeyCode::RAWKEY_F)) {

@@ -5,7 +5,7 @@
 namespace Murl {
 namespace App {
 
-class GameScene;
+class MainScene;
 
 class ShooterApp : public AppBase {
 public:
@@ -18,8 +18,8 @@ public:
   virtual Bool DeInit(const IAppState *appState);
 
 private:
-  GameScene *controller;
+  MainScene *scene;
 };
 
-}
-}
+} // namespace App
+} // namespace Murl

@@ -1,20 +1,14 @@
-#include "murl_app.h"
 #include "shooter_app.h"
-#include "game_scene.h"
+#include "main_scene.h"
+#include "murl_app.h"
 
 using namespace Murl;
 
-IApp *App::CreateApp() 
-{ 
-  return new ShooterApp();
-}
+IApp *App::CreateApp() { return new ShooterApp(); }
 
-void App::DestroyApp(IApp *app) 
-{
-  Util::Release(app);
-}
+void App::DestroyApp(IApp *app) { Util::Release(app); }
 
-App::ShooterApp::ShooterApp() : controller(nullptr) {}
+App::ShooterApp::ShooterApp() : scene(nullptr) {}
 
 App::ShooterApp::~ShooterApp() {}
 
@@ -32,13 +26,14 @@ Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
 }
 
 Bool App::ShooterApp::Init(const IAppState *appState) {
-  controller = new GameScene(appState->GetLogicFactory());
+  scene = new MainScene(appState->GetLogicFactory());
   appState->GetLoader()->AddPackage("debug", ILoader::LOAD_MODE_STARTUP);
-  appState->GetLoader()->AddPackage("root.murlres", ILoader::LOAD_MODE_STARTUP, controller->GetProcessor());
+  appState->GetLoader()->AddPackage("main.murlres", ILoader::LOAD_MODE_STARTUP,
+                                    scene->GetProcessor());
   return true;
 }
 
 Bool App::ShooterApp::DeInit(const IAppState *appState) {
-  Util::Release(controller);
+  Util::Release(scene);
   return true;
 }

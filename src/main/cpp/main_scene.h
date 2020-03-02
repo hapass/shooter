@@ -6,7 +6,9 @@
 namespace Murl {
 namespace App {
 
-class GameScene : public Logic::BaseProcessor {
+class GameScene;
+
+class MainScene : public Logic::BaseProcessor {
 public:
   using Logic::BaseProcessor::BaseProcessor;
 
@@ -15,13 +17,7 @@ protected:
   virtual void OnProcessTick(const Logic::IState *state);
 
 private:
-  Real otherFieldOfView;
-  Logic::TransformNode cameraTransform;
-  Logic::CameraNode camera;
-  Logic::Vector cameraXAxis;
-  Logic::Vector cameraYAxis;
-  Logic::Vector cameraZAxis;
-  Logic::Vector cameraPosition;
+  GameScene *scene;
 };
 
 } // namespace App

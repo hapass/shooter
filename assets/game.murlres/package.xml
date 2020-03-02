@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Package xmlns="http://murlengine.com" id="package_main">
+<Package xmlns="http://murlengine.com" id="package_game">
   <Resource id="graph" fileName="graph.xml"/>
   <Resource id="wood" fileName="wood.jpg"/>
   <Instance graphResourceId="graph"/>
