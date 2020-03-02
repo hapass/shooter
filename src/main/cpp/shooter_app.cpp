@@ -1,6 +1,6 @@
 #include "murl_app.h"
 #include "shooter_app.h"
-#include "scene_manager.h"
+#include "game_scene.h"
 
 using namespace Murl;
 
@@ -32,10 +32,9 @@ Bool App::ShooterApp::Configure(IEngineConfiguration *engineConfig,
 }
 
 Bool App::ShooterApp::Init(const IAppState *appState) {
+  controller = new GameScene(appState->GetLogicFactory());
   appState->GetLoader()->AddPackage("debug", ILoader::LOAD_MODE_STARTUP);
-  
-  controller = new SceneManager(appState->GetLogicFactory());
-  appState->GetLoader()->AddProcessor(controller->GetProcessor());
+  appState->GetLoader()->AddPackage("root.murlres", ILoader::LOAD_MODE_STARTUP, controller->GetProcessor());
   return true;
 }
 

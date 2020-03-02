@@ -5,11 +5,8 @@
 namespace Murl {
 namespace App {
 
-class SceneManager;
+class GameScene;
 
-/**
- * Bootstrapper for the game. Operations in this class happen on main thread.
- **/
 class ShooterApp : public AppBase {
 public:
   ShooterApp();
@@ -21,7 +18,7 @@ public:
   virtual Bool DeInit(const IAppState *appState);
 
 private:
-  SceneManager *controller;
+  GameScene *controller;
 };
 
 }
