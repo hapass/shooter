@@ -70,8 +70,4 @@ void App::GameScene::OnProcessTick(const Logic::IState *state) {
   if (deviceHandler->WasRawKeyPressed(RawKeyCode::RAWKEY_G)) {
     camera->SetFieldOfViewX(camera->GetFieldOfViewX() + this->otherFieldOfView);
   }
-
-  if (deviceHandler->WasRawKeyPressed(RawKeyCode::RAWKEY_ESCAPE)) {
-    deviceHandler->TerminateApp();
-  }
 }

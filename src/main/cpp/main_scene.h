@@ -14,6 +14,7 @@ public:
 
 protected:
   virtual Bool OnInit(const Logic::IState *state);
+  virtual Bool OnDeInit(const Logic::IState *state);
   virtual void OnProcessTick(const Logic::IState *state);
 
 private:

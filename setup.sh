@@ -1,5 +1,5 @@
 engine_path="lib/murl"
-engine_url="https://download.murlengine.com/murl_2018.2.7478.zip"
+engine_url="https://download.murlengine.com/murl_2019.2.7714.zip"
 
 mkdir -p $engine_path
 cd $engine_path
